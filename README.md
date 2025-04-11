@@ -1,62 +1,78 @@
-# XRF Cleaner for Drilling Geochemistry
+# 🧪 XRF Cleaner for Drilling Geochemistry
 
-This repository contains two field-tested Jupyter notebooks used to clean and organize batch and single-file exports from Olympus Vanta portable XRF devices during drilling operations.
+![Python](https://img.shields.io/badge/python-3.10-blue.svg)
+![Status](https://img.shields.io/badge/status-field--tested-green)
 
-Built by a working mudlogger transitioning into data science, these tools are tailored for high-frequency sampling environments like mudlogging, with a focus on QA/QC, logging, and structured dataset creation.
 
----
-
-## 🚀 Contents
-
-### `notebooks/Single_File_XRF_Cleaner.ipynb`
-- Processes a single Vanta `.csv` export
-- Cleans column headers
-- Converts `wt%` values to `ppm`
-- Handles zero division errors
-- Clips outliers between the 1st and 99th percentiles
-
-### `notebooks/Multi_File_XRF_Cleaner.ipynb`
-- Batch processes multiple `chemistry-*.csv` files
-- Tracks processed files in a log to avoid duplication
-- Extracts well names from serial numbers via dictionary mapping
-- Saves cleaned individual files and updates per-well master sheets
-- Includes dry-run mode and a QA/QC summary dashboard
+> A field-tested Jupyter notebook pipeline to clean, organize, and consolidate batch exports from Olympus Vanta portable XRF devices. Built for high-frequency sampling environments like **mudlogging**, this tool automates creation of structured geochemical datasets on a per-well basis.
 
 ---
 
-## 🧪 Features
+## 🛠️ Features
 
-- Unit conversion: wt% to ppm
-- QA/QC filtering (outlier clipping, 0 replacement)
-- File-level logging to prevent reprocessing
-- Per-well master dataset creation
-- Configurable dry run for safe testing
-- Summary dashboard reporting for every run
+-  Cleans raw `.csv` exports from Olympus Vanta
+-  Skips calibration and beam spectral files
+-  Auto-generates **per-well master sheets**
+-  Logs processed files to avoid duplication
+-  Supports "dry-run" QA/QC mode
+-  Can handle hundreds of files in batch mode
 
 ---
 
-## 🗂️ Structure
-
-xrf-cleaner-repo/
-├── notebooks/
-│   ├── Single_File_XRF_Cleaner.ipynb
-│   └── Multi_File_XRF_Cleaner.ipynb
-├── sample_data/             # (optional demo CSVs)
-├── processed/               # <- ignored via .gitignore
-├── README.md
-└── .gitignore
----
-
-## 📦 Requirements
-
-- Python 3.x
-- pandas
-
-Install with:
+## 📂 File Structure
 
 ```bash
-pip install pandas
+xrf-cleaner-repo/
+├── notebooks/
+│   ├── Multi_File_XRF_Cleaner.ipynb
+│   └── Single_File_XRF_Cleaner.ipynb
+├── sample_data/
+│   └── chemistry-841515-*.csv
+├── processed/
+│   └── master_Sample Data.csv
+├── README.md
+└── .gitignore
+```
+----
+## 🚀 Quickstart
 
-💼 Author
+**1. Clone this repo:**
 
-Built by a field-based mudlogger transitioning into data science. This project reflects real-world needs in scientific drilling workflows and demonstrates applied ETL, data cleaning, and QA/QC logic.
+```bash
+git clone https://github.com/jdoan-ds/XRF_Cleaner.git
+cd XRF_Cleaner
+```
+
+**2. (Optional) Create a virtual environment:**
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+**3. Install requirements**
+```bash
+pip install -r requirements.txt
+```
+
+**4. Open the notebook:**
+```bash
+jupyter lab
+```
+
+----
+
+## 📊 Sample Output
+
+Each well will have a master_<well_name>.csv generated that includes:
+	•	Cleaned elemental data
+	•	Metadata from instrument
+	•	Processing log reference
+    
+----
+
+## 💬 Questions?
+
+Open an issue or send a pigeon.
+
+----
+
