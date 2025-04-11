@@ -1,0 +1,11 @@
+# Ignore processed data and logs
+processed/
+*.log
+
+# Jupyter and Python cruft
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+
+# MacOS garbage
+.DS_Store
